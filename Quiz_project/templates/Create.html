@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Platform</title>
+    <style>
+        body {
+            background-color: #181d27;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        form {
+            border-radius: 10px;
+            border: 2px solid white;
+            color: white;
+            padding: 30px;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            font-size: 18px;
+        }
+
+        form h1 {
+            font-family: 'Abril Fatface', cursive;
+            font-size: 48px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .input-container label {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .input-container input[type="text"],
+        .input-container input[type="number"] {
+            border-radius: 5px;
+            border: 1px solid white;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .input-container input[type="checkbox"] {
+            accent-color: white;
+            margin-right: 10px;
+        }
+
+        .time-limit {
+            display: none;
+        }
+
+        .submit-button {
+            background-color: green;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #0a5a32;
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'save_quiz' %}" method="post" id="quizForm">
+        {% csrf_token %}
+        <h1 class="title">Create Quiz</h1>
+        <div class="input-container">
+            <label for="quizTitle">Title:</label>
+            <input type="text" id="quizTitle" name="quizTitle" required>
+        </div>
+        <div class="input-container">
+            <label for="numberOfQuestions">Number of Questions:</label>
+            <input type="number" id="numberOfQuestions" name="numberOfQuestions" min="1" required>
+        </div>
+        <div id="questionsContainer"></div>
+        <button type="submit" class="submit-button">Create Quiz</button>
+    </form>
+    
+    <script>
+        const form = document.getElementById("quizForm");
+        const numberOfQuestionsInput = document.getElementById("numberOfQuestions");
+        const questionsContainer = document.getElementById("questionsContainer");
+
+        numberOfQuestionsInput.addEventListener("change", () => {
+            const numberOfQuestions = parseInt(numberOfQuestionsInput.value);
+            questionsContainer.innerHTML = ""; // Clear previous questions
+
+            for (let i = 0; i < numberOfQuestions; i++) {
+                const questionFieldset = document.createElement("fieldset");
+                questionFieldset.innerHTML = `
+                    <legend>Question ${i + 1}</legend>
+                    <div class="input-container">
+                        <label for="question${i}">Question:</label>
+                        <input type="text" id="question${i}" name="question${i}" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="option1${i}">Option 1:</label>
+                        <input type="text" id="option1${i}" name="option1${i}" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="option2${i}">Option 2:</label>
+                        <input type="text" id="option2${i}" name="option2${i}" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="option3${i}">Option 3:</label>
+                        <input type="text" id="option3${i}" name="option3${i}" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="option4${i}">Option 4:</label>
+                        <input type="text" id="option4${i}" name="option4${i}" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="answer${i}">Correct Answer:</label>
+                        <select id="answer${i}" name="answer${i}" required>
+                            <option value="option1${i}">Option 1</option>
+                            <option value="option2${i}">Option 2</option>
+                            <option value="option3${i}">Option 3</option>
+                            <option value="option4${i}">Option 4</option>
+                        </select>
+                    </div>
+                `;
+                questionsContainer.appendChild(questionFieldset);
+            }
+        });
+    </script>
+</body>
+</html>

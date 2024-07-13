@@ -1,0 +1,924 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Audiowide&family=Bebas+Neue&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,700&display=swap');
+body{
+    font-family: 'Roboto',sans-serif;
+    background-color: rgb(24, 29, 39);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: auto;
+}
+#Nav-bar{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    text-transform: uppercase;
+    gap: 40px;
+    background-color: transparent;
+}
+#Nav-bar .logo{
+    font-family: 'Bad Script', cursive;
+    font-weight: bold;
+    font-size: 30px;
+    padding-left: 20px;
+    letter-spacing: 3px;
+}
+#Nav-bar li{
+    list-style: none;
+    font-family: 'Roboto',sans-serif;
+    position: relative;
+    left: 5em;
+    top: 0.2em;
+}
+#Nav-bar li a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 5px;
+    padding: 10px;
+}
+#Nav-bar li a::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    width: 0;
+    height: 2px; 
+    background-color: white;
+    transition: width 1s ease-out, left 1s ease-out; 
+}
+#Nav-bar li a:hover::before {
+    width: 100%;
+    height: 3px;
+    left: 0;
+}
+#Nav-bar button{
+    font-family: 'Roboto',sans-serif;
+    width: 100px;
+    height: 50px;
+    font-size: 18px;
+    position: absolute;
+    right: 5em;
+    text-transform: uppercase;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1.5px solid white;
+    color: white;
+    margin-right: 30px;
+    transition: 1s ease-in-out;
+}
+#Nav-bar button:hover{
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+#Nav-bar .hamburger-icon{
+    display: none;
+}
+#Nav-bar .mobile-nav{
+    display: none;
+}
+#Nav-bar .profile-btn{
+    width: 8em;
+    border-radius: 15px;
+}
+.dropdown {
+    display: inline-block;
+    position: absolute;
+    top: 1.5em;
+    right: 0;
+}
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color:  rgb(24, 29, 39);
+    min-width: 140px;
+    z-index: 1;
+    top: 3em;
+    right: 18.5vh;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-family: 'Roboto',sans-serif;
+    border: 2px solid white;
+}
+.dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: left;
+    transition: color 1s;
+    position: relative;
+    left: 10px;
+}
+.dropdown-content a:hover {
+    background-color: white;
+    color: black;
+}
+.CreateOrJoin {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.CreateOrJoin img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.CreateOrJoin #go_to_create {
+    position: absolute;
+    bottom: 14vh;
+    left: 19vh;
+    z-index: 3;
+    width: 36vh;
+    height: 12vh;
+    border-radius: 3vh;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 4vh;
+    transition: 1s ease-in-out;
+    cursor: pointer;
+}
+.CreateOrJoin #go_to_create:hover{
+    background-color: white;
+    color: black;
+}
+#go_to_join{
+    position: absolute;
+    bottom: 14vh;
+    right: 19vh;
+    z-index: 3;
+    width: 36vh;
+    height: 12vh;
+    border-radius: 3vh;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 4vh;
+    transition: 1s ease-in-out;
+    cursor: pointer;
+}
+.CreateOrJoin #go_to_join:hover{
+    background-color: white;
+    color: black;
+}
+.CreateOrJoin p {
+    position: absolute;
+    top: 2vh;
+    left: 87vh;
+    transform: translate(-50%, 50%); 
+    z-index: 1;
+    color: white;
+    font-size: 8vh;
+}
+
+#Frame1 {
+    width: 195vh;
+    height: 50vh;
+    position: relative;
+    right: 1.5vh;
+    top: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Ensure that the image doesn't overflow */
+}
+
+#Frame1 .CreateOrJoin{
+    width: 170vh;
+    height: 40vh;
+    border: 2px solid white;
+    border-radius: 20px;
+}
+#Frame2 {
+    width: 200vh;
+    height: 700vh;
+    position: absolute;
+    left: 0;
+    top: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#Frame2 .Geography{
+    width: 180vh;
+    height: 53vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 17vh;
+}
+#Frame2 .Geography::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0; /* Hide the scrollbar by default */
+}
+
+#Frame2 .Geography:hover::-webkit-scrollbar {
+    opacity: 1; /* Display the scrollbar on hover */
+}
+
+#Frame2 .Geography::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+#Frame2 .Geography::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+}
+
+#Frame2 .Geography::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+#Frame2 .title{
+    color: white;
+    font-size: 5vh;
+    font-weight: 500;
+    position: absolute;
+    left: 11vh;
+    top: 0;
+}
+#Frame2 .Geography img{
+    width: 50vh;
+    height: 37vh;
+    border: 2px solid white;
+    border-radius: 15px;
+    margin-right: 4vh;
+}
+
+.Geography .image-container p{
+    position: relative;
+    font-size: 4vh;
+    color: white;
+    left: 9vh;
+}
+#nextbutton{
+    background-color: transparent;
+    position: absolute;
+    right: 5vh;
+    height: 10vh;
+    width: 20vh;
+    top: 3vh;
+    color: white;
+    border: none;
+}
+#nextbutton img{
+    width: 7vh;
+}
+#Frame2 .History{
+    width: 180vh;
+    height: 60vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    left: 10vh;
+    top: 90vh;
+}
+#Frame2 .title2{
+    color: white;
+    font-size: 5vh;
+    font-weight: 500;
+    position: absolute;
+    left: 13vh;
+    top: 72vh;
+}
+
+#Frame2 .History img{
+    width: 50vh;
+    height: 37vh;
+    border: 2px solid white;
+    border-radius: 15px;
+    margin-right: 4vh;
+}
+.History .image-container p{
+    position: relative;
+    font-size: 4vh;
+    color: white;
+    left: 9vh;
+}
+#Frame2 .History{
+    width: 180vh;
+    height: 53vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 88vh;
+}
+#Frame2 .History::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0; /* Hide the scrollbar by default */
+}
+
+#Frame2 .History:hover::-webkit-scrollbar {
+    opacity: 1; /* Display the scrollbar on hover */
+}
+
+#Frame2 .History::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+#Frame2 .History::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+}
+
+#Frame2 .History::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+#nextbutton2{
+    background-color: transparent;
+    position: absolute;
+    right: 5vh;
+    height: 10vh;
+    width: 20vh;
+    top: 75vh;
+    color: white;
+    border: none;
+}
+#nextbutton2 img{
+    width: 7vh;
+}
+#Frame2 .title3{
+    color: white;
+    font-size: 5vh;
+    font-weight: 500;
+    position: absolute;
+    left: 13vh;
+    top: 145vh;
+}
+
+#Frame2 .science img{
+    width: 50vh;
+    height: 37vh;
+    border: 2px solid white;
+    border-radius: 15px;
+    margin-right: 4vh;
+}
+.science .image-container p{
+    position: relative;
+    font-size: 4vh;
+    color: white;
+    left: 9vh;
+}
+#Frame2 .Science{
+    width: 180vh;
+    height: 53vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 163vh;
+}
+#Frame2 .science::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0; /* Hide the scrollbar by default */
+}
+
+#Frame2 .science:hover::-webkit-scrollbar {
+    opacity: 1; /* Display the scrollbar on hover */
+}
+
+#Frame2 .science::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+#Frame2 .science::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+}
+
+#Frame2 .science::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+#nextbutton3{
+    background-color: transparent;
+    position: absolute;
+    right: 5vh;
+    height: 10vh;
+    width: 20vh;
+    top: 150vh;
+    color: white;
+    border: none;
+}
+#nextbutton3 img{
+    width: 7vh;
+}
+#Frame2 .title4{
+    color: white;
+    font-size: 5vh;
+    font-weight: 500;
+    position: absolute;
+    left: 13vh;
+    top: 220vh;
+}
+
+#Frame2 .Technology img{
+    width: 50vh;
+    height: 37vh;
+    border: 2px solid white;
+    border-radius: 15px;
+    margin-right: 4vh;
+}
+.Technology .image-container p{
+    position: relative;
+    font-size: 4vh;
+    color: white;
+    left: 9vh;
+}
+#Frame2 .Technology{
+    width: 180vh;
+    height: 53vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 238vh;
+}
+#Frame2 .Technology::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0; /* Hide the scrollbar by default */
+}
+
+#Frame2 .Technology:hover::-webkit-scrollbar {
+    opacity: 1; /* Display the scrollbar on hover */
+}
+
+#Frame2 .Technology::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+#Frame2 .Technology::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+}
+
+#Frame2 .Technology::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+#nextbutton4{
+    background-color: transparent;
+    position: absolute;
+    right: 5vh;
+    height: 10vh;
+    width: 20vh;
+    top: 225vh;
+    color: white;
+    border: none;
+}
+#nextbutton4 img{
+    width: 7vh;
+}
+#Frame2 .title5{
+    color: white;
+    font-size: 5vh;
+    font-weight: 500;
+    position: absolute;
+    left: 13vh;
+    top: 295vh;
+}
+
+#Frame2 .Programming-Language img{
+    width: 50vh;
+    height: 37vh;
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 15px;
+    margin-right: 4vh;
+}
+.Programming-Language .image-container p{
+    position: relative;
+    font-size: 4vh;
+    color: white;
+    left: 9vh;
+}
+#Frame2 .Programming-Language{
+    width: 180vh;
+    height: 53vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 314vh;
+}
+#Frame2 .Programming-Language::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0; /* Hide the scrollbar by default */
+}
+
+#Frame2 .Programming-Language:hover::-webkit-scrollbar {
+    opacity: 1; /* Display the scrollbar on hover */
+}
+
+#Frame2 .Programming-Language::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+#Frame2 .Programming-Language::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+}
+
+#Frame2 .Programming-Language::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+#nextbutton5{
+    background-color: transparent;
+    position: absolute;
+    right: 5vh;
+    height: 10vh;
+    width: 20vh;
+    top: 300vh;
+    color: white;
+    border: none;
+}
+#nextbutton5 img{
+    width: 7vh;
+}
+#Frame2 .title6{
+    color: white;
+    font-size: 5vh;
+    font-weight: 500;
+    position: absolute;
+    left: 13vh;
+    top: 370vh;
+}
+
+#Frame2 .Operating-System img{
+    width: 50vh;
+    height: 37vh;
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 15px;
+    margin-right: 4vh;
+}
+.Operating-System .image-container p{
+    position: relative;
+    font-size: 4vh;
+    color: white;
+    left: 9vh;
+}
+#Frame2 .Operating-System{
+    width: 180vh;
+    height: 53vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 390vh;
+}
+#Frame2 .Operating-System::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0; /* Hide the scrollbar by default */
+}
+
+#Frame2 .Operating-System:hover::-webkit-scrollbar {
+    opacity: 1; /* Display the scrollbar on hover */
+}
+
+#Frame2 .Operating-System::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+#Frame2 .Operating-System::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+}
+
+#Frame2 .Operating-System::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+#nextbutton6{
+    background-color: transparent;
+    position: absolute;
+    right: 5vh;
+    height: 10vh;
+    width: 20vh;
+    top: 375vh;
+    color: white;
+    border: none;
+}
+#nextbutton6 img{
+    width: 7vh;
+}
+.image-container img {
+    transition: opacity 0.3s ease; 
+    cursor: pointer;
+}
+
+.image-container img:hover {
+    opacity: 0.3; /* Reduce opacity to 80% on hover */
+}
+
+#Frame2 .title7{
+    color: white;
+    font-size: 5vh;
+    font-weight: 500;
+    position: absolute;
+    left: 13vh;
+    top: 447vh;
+}
+
+#Frame2 .Database-Management-System img{
+    width: 50vh;
+    height: 37vh;
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 15px;
+    margin-right: 4vh;
+}
+.Database-Management-System .image-container p{
+    position: relative;
+    font-size: 4vh;
+    color: white;
+    left: 9vh;
+}
+#Frame2 .Database-Management-System{
+    width: 180vh;
+    height: 53vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 468vh;
+}
+#Frame2 .Database-Management-System::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0; /* Hide the scrollbar by default */
+}
+
+#Frame2 .Database-Management-System:hover::-webkit-scrollbar {
+    opacity: 1; /* Display the scrollbar on hover */
+}
+
+#Frame2 .Database-Management-System::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+#Frame2 .Database-Management-System::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+}
+
+#Frame2 .Database-Management-System::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+#nextbutton7{
+    background-color: transparent;
+    position: absolute;
+    right: 5vh;
+    height: 10vh;
+    width: 20vh;
+    top: 450vh;
+    color: white;
+    border: none;
+}
+#nextbutton7 img{
+    width: 7vh;
+}
+
+#Frame2 .title8{
+    color: white;
+    font-size: 5vh;
+    font-weight: 500;
+    position: absolute;
+    left: 13vh;
+    top: 525vh;
+}
+
+#Frame2 .Microprocessor img{
+    width: 50vh;
+    height: 37vh;
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 15px;
+    margin-right: 4vh;
+}
+.Microprocessor .image-container p{
+    position: relative;
+    font-size: 4vh;
+    color: white;
+    left: 9vh;
+}
+#Frame2 .Microprocessor{
+    width: 180vh;
+    height: 53vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 545vh;
+}
+#Frame2 .Microprocessor::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0; /* Hide the scrollbar by default */
+}
+
+#Frame2 .Microprocessor:hover::-webkit-scrollbar {
+    opacity: 1; /* Display the scrollbar on hover */
+}
+
+#Frame2 .Microprocessor::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+#Frame2 .Microprocessor::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+}
+
+#Frame2 .Microprocessor::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+#nextbutton8{
+    background-color: transparent;
+    position: absolute;
+    right: 5vh;
+    height: 10vh;
+    width: 20vh;
+    top: 530vh;
+    color: white;
+    border: none;
+}
+#nextbutton8 img{
+    width: 7vh;
+}
+#Frame2 .title9{
+    color: white;
+    font-size: 5vh;
+    font-weight: 500;
+    position: absolute;
+    left: 13vh;
+    top: 603vh;
+}
+
+#Frame2 .Computer-networking img{
+    width: 50vh;
+    height: 37vh;
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 15px;
+    margin-right: 4vh;
+}
+.Computer-networking .image-container p{
+    position: relative;
+    font-size: 4vh;
+    color: white;
+    left: 9vh;
+}
+#Frame2 .Computer-networking{
+    width: 180vh;
+    height: 53vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 623vh;
+}
+#Frame2 .Computer-networking::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0; /* Hide the scrollbar by default */
+}
+
+#Frame2 .Computer-networking:hover::-webkit-scrollbar {
+    opacity: 1; /* Display the scrollbar on hover */
+}
+
+#Frame2 .Computer-networking::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+#Frame2 .Computer-networking::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+}
+
+#Frame2 .Computer-networking::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+#nextbutton9{
+    background-color: transparent;
+    position: absolute;
+    right: 5vh;
+    height: 10vh;
+    width: 20vh;
+    top: 610vh;
+    color: white;
+    border: none;
+}
+#nextbutton9 img{
+    width: 7vh;
+}
+
+@media (max-width : 1230px){
+    #Nav-bar{
+        gap: 15px;
+    }
+    #Nav-bar li a{
+        position: relative;
+        right: 50px;
+    }
+}
+@media (max-width : 1060px){
+    #Nav-bar li a{
+        font-size: 17px;
+    }
+    #Nav-bar .logo{
+        font-size: 25px;
+    }
+    #Nav-bar button{
+        font-size: 16px;
+    }
+}
+@media (max-width: 975px) {
+    body{
+        overflow-x: hidden;
+    }
+    #Nav-bar li a{
+        display: none;
+    }
+    #Nav-bar button{
+        position: absolute;
+        right: 7em;
+    }
+    #Nav-bar .hamburger-icon {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        right: 4em;
+        border: 2px solid white;
+        border-radius: 10px;
+    }
+    #Nav-bar .hamburger-icon .bar {
+        display: block;
+        width: 30px;
+        height: 2px;
+        background-color: white;
+        margin: 10px 9px;
+    }
+    #Nav-bar .mobile-nav {
+        display: flex;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        z-index: 1;
+        width: 100%;
+        padding-top: 4em;
+        background-color: rgb(0, 0, 0);
+        position: absolute;
+        top: 0;
+        height: 25em;
+    }
+
+    #Nav-bar .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+    }
+
+    #Nav-bar .mobile-nav li {
+        text-align: flex-start;
+    }
+
+    #Nav-bar .mobile-nav li a {
+        display: block;
+        padding: 24px;
+        text-decoration: none;
+        color: white;
+        font-size: 33px;
+        letter-spacing: 4px;
+    }
+    #Nav-bar .mobile-nav .close-btn {
+        position: absolute;
+        top: 25px;
+        right: -138px;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    #Nav-bar .mobile-nav .close-btn img{
+        width: 17%;
+    }
+}
+button#loginBtn {
+    position: absolute;
+    top: 12.5vh;
+}

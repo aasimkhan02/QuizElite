@@ -1,0 +1,246 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Platform</title>
+    <link rel="stylesheet" href="{% static 'css/Quizes.css' %}">
+    <link rel="stylesheet" href="Quizes.css">
+</head>
+<body>
+    <section id="Nav-bar">
+        <div class="Logo">QuizElite</div>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href='#'>Quizzes</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        {% if user.is_authenticated %}
+            <!-- If user is authenticated, display Profile dropdown -->
+            <div class="dropdown">
+                <button class="profile-btn" onclick="toggleDropdown()">Dashboard</button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <a class="Logout" href="{% url 'logout_user' %}">Logout</a>
+                </div>
+            </div>
+        {% else %}
+            <!-- If user is not authenticated, display Sign-In button -->
+            <button class="signin-btn" onclick="OpenLogin()">Sign-In</button>
+        {% endif %}
+        <div class="hamburger-icon" onclick="toggleNav()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="mobile-nav">
+            <div class="close-btn" onclick="toggleNav()"><img src="{% static 'images/Close_button.png' %}" alt="close-button"></div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Quizzes</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">FAQs</a></li>
+            </ul>
+        </div>
+    </section>
+    <section id="Frame1">
+        <div class="CreateOrJoin">
+            <img src="{% static 'images/dark.jpg' %}" alt="">
+            <button id="go_to_create">CREATE</button>
+            <p>OR</p>
+            <button id="go_to_join">JOIN</button>
+        </div>
+    </section>
+    <section id="Frame2">
+        <button id="nextbutton"><img src="{% static 'images/all/next.png' %}" alt="more"></button>
+        <p class="title">Geography</p>
+        <div class="Geography">
+            <div class="image-container">
+                <img src="{% static 'images/all/american flag.png' %}" alt="Guess the flag" id="FlagQuiz">
+                <p>Guess the Flag</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/Guess the capital.webp' %}" alt="Country Capital" id="CapitalQuiz">
+                <p>Guess the Capital</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/machu.jpg' %}" alt="Guess the landmark" id="LandmarkQuiz">
+                <p>Guess the Landmark</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/Mount everest.jpg' %}" alt="Mount Everest" id="MountainQuiz">
+                <p>Mountain Quiz</p>
+            </div>
+        </div>
+        <button id="nextbutton2"><img src="{% static 'images/all/next.png' %}" alt="more"></button>
+        <p class="title2">History</p>
+        <div class="history">
+            <div class="image-container">
+                <img src="{% static 'images/all/lincoln.jpg' %}" alt="Guess the figure" id="FigureQuiz">
+                <p>Guess the Figure</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/ajanta caves.jpg' %}" alt="Civilisation" id="CivilizationQuiz">
+                <p>guess the civilization</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/Guess the war.jpg' %}" alt="war" id="WarQuiz">
+                <p>Guess the War</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/salt march.jpg' %}" alt="indian history" id="IndianHistoryQuiz">
+                <p>Indian history Quiz</p>
+            </div>
+        </div>
+        <button id="nextbutton3"><img src="{% static 'images/all/next.png' %}" alt="more"></button>
+        <p class="title3">Science</p>
+        <div class="science">
+            <div class="image-container">
+                <img src="{% static 'images/all/guess the space.jpg' %}" alt="astronomy" id="AstronomyQuiz">
+                <p>Astronomy Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/biology quiz.jpg' %}" alt="biology" id="BiologyQuiz">
+                <p>Biology Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/physics quiz.jpg' %}" alt="Physics" id="PhysicsQuiz">
+                <p>Physics Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/guess the element.jpg' %}" alt="Element" id="ElementQuiz">
+                <p>Guess the Element</p>
+            </div>
+        </div>
+        <button id="nextbutton4"><img src="{% static 'images/all/next.png' %}" alt="more"></button>
+        <p class="title4">Technology</p>
+        <div class="Technology">
+            <div class="image-container">
+                <img src="{% static 'images/all/microsoft.png' %}" alt="Innovation" id="InnovationQuiz">
+                <p>Tech Innovation Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/tech jargon.jpg' %}" alt="jargon" id="JargonQuiz">
+                <p>Tech Jargon</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/Tech history quiz.jpg' %}" alt="tech history" id="TechHistryQuiz">
+                <p>Tech History Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/Tech devices.jpg' %}" alt="Devices" id="TechDevicesQuiz">
+                <p>Tech Devices Quiz</p>
+            </div>
+        </div>
+        <button id="nextbutton5"><img src="{% static 'images/all/next.png' %}" alt="more"></button>
+        <p class="title5">Programming Language</p>
+        <div class="Programming-Language">
+            <div class="image-container">
+                <img src="{% static 'images/all/python.png' %}" alt="python" id="PythonQuiz">
+                <p>Python Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/java.png' %}" alt="Java" id="JavaQuiz">
+                <p>Java Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/javascript.png' %}" alt="javascript" id="JavascriptQuiz">
+                <p>Javascript Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/c++.png' %}" alt="c++" id="C++Quiz">
+                <p>C++ Quiz</p>
+            </div>
+        </div>
+        <button id="nextbutton6"><img src="{% static 'images/all/next.png' %}" alt="more"></button>
+        <p class="title6">Operating System</p>
+        <div class="Operating-System">
+            <div class="image-container">
+                <img src="{% static 'images/all/microsoft.png' %}" alt="types" id="TypesQuiz">
+                <p>Types of OS</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/memory.jpg' %}" alt="memory" id="ConceptQuiz">
+                <p>OS Concept Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/features.jpg' %}" alt="linux" id="FeaturesQuiz">
+                <p>OS Features Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/microsoft.png' %}" alt="microsoft" id="OSHistoryQuiz">
+                <p>History of OS</p>
+            </div>
+        </div>
+        <button id="nextbutton7"><img src="{% static 'images/all/next.png' %}" alt="more"></button>
+        <p class="title7">Database Management System</p>
+        <div class="Database-Management-System">
+            <div class="image-container">
+                <img src="{% static 'images/all/database.jpg' %}" alt="SQL Queries and Commands" id="SQLQuiz">
+                <p>SQL Queries</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/database.jpg' %}" alt="Database design" id="DesignQuiz">
+                <p>Database design</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/database.jpg' %}" alt="RDMS" id="RDBMSQuiz">
+                <p>Relational DBMS</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/database.jpg' %}" alt="NOSQL" id="NOSQLQuiz">
+                <p>NoSQL</p>
+            </div>
+        </div>
+        <button id="nextbutton8"><img src="{% static 'images/all/next.png' %}" alt="more"></button>
+        <p class="title8">Microprocessor</p>
+        <div class="Microprocessor">
+            <div class="image-container">
+                <img src="{% static 'images/all/microprocessor.jpg' %}" alt="8086Quiz" id="8086Quiz">
+                <p>8086 Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/microprocessor.jpg' %}" alt="80386Quiz" id="80386Quiz">
+                <p>80386 Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/microprocessor.jpg' %}" alt="PentiumQuiz" id="PentiumQuiz">
+                <p>Pentium Quiz</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/microprocessor.jpg' %}" alt="ComparisionQuiz" id="ComparisionQuiz">
+                <p>8085 vs 8086</p>
+            </div>
+        </div>
+        <button id="nextbutton9"><img src="{% static 'images/all/next.png' %}" alt="more"></button>
+        <p class="title9">Computer Networking</p>
+        <div class="Computer-networking">
+            <div class="image-container">
+                <img src="{% static 'images/all/computer networking.png' %}" alt="OSIQuiz" id="OSIQuiz">
+                <p>OSI Model</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/computer networking.png' %}" alt="DevicesQuiz" id="DevicesQuiz">
+                <p>Network Devices</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/computer networking.png' %}" alt="AddressingQuiz" id="AddressingQuiz">
+                <p>IP Addressing</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/all/computer networking.png' %}" alt="Security" id="SecurityQuiz">
+                <p>Network Security</p>
+            </div>
+        </div>
+    </section>
+    
+    <script src="{% static 'js/Quizes.js' %}"></script>
+    <script> 
+        document.getElementById("go_to_create").addEventListener('click', function () {
+            window.location.href = '/Create.html';
+        });
+        document.getElementById("go_to_join").addEventListener('click', function () {
+            window.location.href = '/join.html'
+        })
+    </script>
+    <script src="Quizes.js"></script>
+    </body>
+</html>

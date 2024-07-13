@@ -1,0 +1,304 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Platform</title>
+    <link rel="stylesheet" href="About.css">
+</head>
+<body>
+    <section id="Nav-bar">
+        <div class="Logo">QuizElite</div>
+        <li><a href="#">Home</a></li>
+        <li><a href="{% url 'quizes' %}">Quizzes</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        {% if user.is_authenticated %}
+            <!-- If user is authenticated, display Profile dropdown -->
+            <div class="dropdown">
+                <button class="profile-btn" onclick="toggleDropdown()">Dashboard</button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <a class="Logout" href="{% url 'logout_user' %}">Logout</a>
+                </div>
+            </div>
+        {% else %}
+            <!-- If user is not authenticated, display Sign-In button -->
+            <button class="signin-btn" onclick="OpenLogin()">Sign-In</button>
+        {% endif %}
+        <div class="hamburger-icon" onclick="toggleNav()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="mobile-nav">
+            <div class="close-btn" onclick="toggleNav()"><img src="{% static 'images/Close_button.png' %}" alt="close-button"></div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Quizzes</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </section>
+    <p>Meet Our Team</p>
+    <section class="Team">
+        <div class="Ehtesham">
+            <img src="{% static 'images/profile pic.png' %}" alt="">
+            <p>Khan Ehtesham Azizur Rehman (22CO18)</p>
+            <div class="intro"><li>UI/UX Designer of Website</li><li>Intergal part in documentation of Website</li><li>Key member in structuring the Website</li><li>Contact at : 22co18@aiktc.ac.in</li></div>
+        </div>
+        <div class="Kaif">
+            <img src="{% static 'images/profile pic.png' %}" alt="">
+            <p>Khan Kaif Salman(22CO19)</p>
+            <div class="intro"><li>Front-End Developer of Website</li><li>Intergal part in Structuring website</li><li>Contact at : 22co19@aiktc.ac.in</li></div>
+        </div>
+        <div class="Aasim">
+            <img src="{% static 'images/profile pic.png' %}" alt="">
+            <p>Khan Mohd Aasim Maqsood (22CO22)</p>
+            <div class="intro"><li>Front-End/ Back-end Developer of website</li><li>Developer of Quiz logics and working</li><li>Contact at : 22co22@aiktc.ac.in</li></div>
+        </div>
+    </section>
+    <script src="About.js"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Audiowide&family=Bebas+Neue&family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,700&display=swap');
+        body{
+            background-color: rgb(24, 29, 39);
+            width: 100%;
+            overflow-x: hidden;
+            height: auto;
+            font-family: 'Roboto',sans-serif;
+        }
+        #Nav-bar{
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 15px;
+            text-transform: uppercase;
+            gap: 40px;
+            z-index: 2;
+            position: relative;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.121);
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #Nav-bar .logo{
+            font-family: 'Bad Script', cursive;
+            font-weight: bold;
+            font-size: 5vh;
+            padding-left: 20px;
+            letter-spacing: 3px;
+            color: white;
+        }
+        #Nav-bar li{
+            list-style: none;
+            font-family: 'Roboto',sans-serif;
+            position: relative;
+            left: 6vh;
+        }
+        #Nav-bar li a{
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.3em;
+            letter-spacing: 5px;
+            padding: 10px;
+        }
+        #Nav-bar li a::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 0;
+            height: 2px; 
+            background-color: white;
+            transition: width 1s ease-out, left 1s ease-out; 
+        }
+        #Nav-bar li a:hover::before {
+            width: 100%;
+            height: 3px;
+            left: 0;
+        }
+        #Nav-bar button{
+            font-family: 'Roboto',sans-serif;
+            width: 20vh;
+            height: 8.5vh;
+            font-size: 3vh;
+            text-transform: uppercase;
+            border-radius: 15px;
+            background-color: transparent;
+            border: 0.5vh solid white;
+            color: white;
+            margin-right: 30px;
+            transition: 1s ease-in-out;
+            position: absolute;
+            right: 10vh;
+            box-shadow:rgba(0, 0, 0, 0.324) 2px 3px 2px;
+        }
+        #Nav-bar button:hover{
+            color: black;
+            background-color: white;
+            box-shadow: white 2px 3px 2px;
+            cursor: pointer;
+        }
+        #Nav-bar .hamburger-icon{
+            display: none;
+        }
+        #Nav-bar .mobile-nav{
+            display: none;
+        }
+        #Nav-bar .profile-btn{
+            width: 8em;
+            border-radius: 15px;
+        }
+        .dropdown {
+            display: inline-block;
+            position: absolute;
+            top: 1.5em;
+            right: 0;
+        }
+        .dropdown-content {
+            display: none;
+            position: relative;
+            background-color: #182823;
+            min-width: 140px;
+            z-index: 1;
+            top: 3em;
+            right: 7.4em;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            font-family: 'Roboto',sans-serif;
+            border: 2px solid white;
+        }
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+            color: #ffffff;
+            text-align: left;
+            transition: color 1s;
+        }
+        .dropdown-content a:hover {
+            background-color: white;
+            color: black;
+        }
+        p{
+            font-size: 6vh;
+            color: white;
+            position: absolute;
+            left: 73vh;
+            top: 15vh;
+            text-transform: uppercase;
+        }
+        .Team { 
+            width: 100%;
+            height: 260vh;
+            position: absolute;
+            left: 0;
+            top: 30vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        .Ehtesham {
+            background-color: white;
+            width: 150vh;
+            height: 70vh;
+            margin-top: 15vh;
+            border: 2px solid white;
+            border-radius: 15px;
+        }
+        .Ehtesham img{
+            width: 11vh;
+            height: 11vh;
+            padding: 8px;
+            background-color: black;
+            border-radius: 100%;
+            position: relative;
+            left: 5vh;
+            top: 3vh;
+        }
+        .Ehtesham p{
+            color: black;
+            font-size: 5vh;
+            letter-spacing: 3px;
+            position: absolute;
+            left: 50vh;
+            top: 18vh;
+        }
+        .Ehtesham .intro{
+            position: absolute;
+            top: 40vh;
+            left: 33vh;
+            font-size: 4vh;
+        }
+        .kaif {
+            background-color: white;
+            width: 150vh;
+            height: 70vh;
+            border: 2px solid white;
+            border-radius: 15px;
+        }
+        .kaif img{
+            width: 11vh;
+            height: 11vh;
+            padding: 8px;
+            background-color: black;
+            border-radius: 100%;
+            position: relative;
+            left: 5vh;
+            top: 3vh;
+        }
+        .kaif p{
+            color: black;
+            font-size: 5vh;
+            letter-spacing: 3px;
+            position: absolute;
+            left: 50vh;
+            top: 98vh;
+        }
+        .kaif .intro{
+            position: absolute;
+            top: 120vh;
+            left: 33vh;
+            font-size: 4vh;
+        }
+        .aasim {
+            background-color: white;
+            width: 150vh;
+            height: 70vh;
+            margin-bottom: 15vh;
+            border: 2px solid white;
+            border-radius: 15px;
+        }
+        .aasim img{
+            width: 11vh;
+            height: 11vh;
+            padding: 8px;
+            background-color: black;
+            border-radius: 100%;
+            position: relative;
+            left: 5vh;
+            top: 3vh;
+        }
+        .aasim p{
+            color: black;
+            font-size: 5vh;
+            letter-spacing: 3px;
+            position: absolute;
+            left: 50vh;
+            top: 178vh;
+        }
+        .aasim .intro{
+            position: absolute;
+            top: 200vh;
+            left: 33vh;
+            font-size: 4vh;
+        }</style>
+</body>
+</html>

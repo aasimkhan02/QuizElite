@@ -1,0 +1,233 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    {% load static %}
+    <title>Contact Us</title>
+</head>
+<body>
+<div class="contact" id="contact">
+    <div class="contact-text">
+        <h2>Have A Query?</h2>
+        <h2>Contact <span>US</span></h2>
+        <p>
+        </p>
+         <div class="contact-list">
+             <li><i class="bx bxs-phone-call"></i>Phone:+91 9824335678 <br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;+91 7865243879 </li><br>
+             <li><i  class="bx bxs-envelope"></i> Email:khan2004@gmail.com</li><br>
+             <li><i class='bx bxs-location-plus' ></i> Address: <br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; Plot No. 2 & 3, Near Thana Naka, Khandagaon,<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; New Panvel, Panvel, Maharashtra 410206 · </li>
+            
+         </div> 
+         <div class="contact-icons">
+            <a href=""><i class="bx bxl-facebook-circle"></i></a>
+            <a href=""><i class="bx bxl-twitter"></i></a>
+            <a href=""><i class="bx bxl-instagram"></i></a>
+            <a href=""><i class="bx bxl-linkedin"></i></a>
+         </div>
+     </div>
+
+    <div class="contact-form">
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="c76d4aac-33be-402e-958b-2b75c27784ff">
+            <input type="text" name="your_name" placeholder="Enter Your Name" required >
+            <input type="email" name="mail" placeholder="Enter Your Email" required >
+            <input type="text" name="Subject" placeholder="Enter Your Subject" required >
+            <textarea name="" id="" cols="40" rows="10" placeholder="Enter Your Message" required></textarea>
+            
+            <!-- <input type="submit" name="submit" value="submit" class="send" onclick="alert('Form Submitted Sucessfully!')" ><i class="bx bxs-send"></i> -->
+            <button type="submit" value="submit" onclick="alert('Form Submitted Sucessfully!')" class="send"> <i class="bx bxs-send"></i> submit</button>
+        </form>
+    </div>
+    <!-- <div class="img"><img src="send.png" alt="send" height="40px" width="40px" > </div> -->
+</div>
+</body>
+</html>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+}
+body{
+    color: #ededed;
+    height: 200px;
+}
+.contact{
+    background-color: #200303;
+    display:grid;
+    grid-template-columns: repeat(2,1fr); 
+    align-items: center;
+    gap:rem;
+    padding-left: 20px;
+    padding-bottom: 30px;
+    padding-top: 40px;
+    margin-top: 80px;
+    margin-left:10px;
+    margin-right: 10px;
+    border-radius: 30px;
+  
+}
+.contact-text{
+    margin-top: 10px;
+    margin-bottom: 200px;
+}
+.contact-text h2 {
+    font-size: 30px;
+    word-spacing: 8px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.contact-text h2 span{
+    color: #0ef;
+    font-size: 30px;
+    word-spacing: 8px;
+}
+.contact-text h4{
+    margin: 15px 0;
+    color: rgb(228,228,228);
+    font-size: 20px;
+    font-weight: 30px;
+    margin-bottom: 2rem;
+}
+.contact-text p{
+    color:rgb(163,163,163);
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 2rem;
+    padding-top: 40px;
+    padding-right: 210px;
+} 
+.contact-list
+{
+    margin-bottom: 3rem;
+    color: #fff;
+}
+.contact-list li{
+    margin-bottom: 10px;
+    display: block; 
+    /* border: 2px solid white; */
+    width: 95%;
+}
+.contact-list li i{
+    display: inline-block;
+    color: #0ef;
+    font-size: 20px;
+    font-weight: 600;
+}
+.contact-list li i:hover{
+    color: rgba(32, 169, 215, 0.785);
+    
+}
+.contact-icons a i{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #0ef;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #0ef;
+    text-decoration: none;
+    margin: 30px 15px 30px 0;
+}
+.contact-icons a i:hover{
+    background: #0ef;
+    color: #000000;
+    box-shadow: 0 0 20px #0ef;
+    height: 50px;
+    width: 50px;
+}
+.contact-form form{
+    position:relative;
+
+}
+.contact-form form input,form textarea{
+    border: none;
+    outline: none;
+    width: 97%;
+    padding: 10px;
+    background: #555557;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    margin-top: 15px;
+    margin-right: 12px;
+}
+.contact-form textarea{
+    resize: none;
+    height: 220px;
+}
+.contact-form form .send{ 
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 50px;
+    padding-right: 16rem;
+    padding-top: 20px;
+    background: #0ef;
+    border-radius: 40px;
+    font-size: 18px;
+    color: #081b29;
+    letter-spacing: 1px;
+    text-decoration: none;
+   font-weight: 600;
+   box-shadow: 0 0 5px #0ef,
+   0 0 25px #0ef;
+}
+.contact-form form .send i{
+    color: #200303;
+    /* height: 45px;
+    width: 20px; */
+
+}
+.contact-form form .send i:hover{
+    color: rgb(186, 22, 22);
+}
+.contact-form form i{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: 2px solid #0ef;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #0ef;
+    text-decoration: none;
+    margin: 0px 0px 1px 200px;
+}
+.contact-form form .send:hover{
+    box-shadow: 0 0 5px #0ef,
+    0 0 15px #0ef, 0 0 20px #0ef,
+    0 0 45px #0ef,0 0 50px #0ef;
+    text-shadow: 1px 1px black;
+    text-transform: uppercase;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* .img{
+    display: grid;
+    margin-right: 18rem;
+    position: relative;
+    justify-content:right ;
+    align-items: center;
+} */
+
+@media(max-width:700px){
+    .contact{
+        display: block;
+    }
+    .contact-text p{
+        font-size: 22px;
+        padding-top: 60px;
+    }
+}
+</style>

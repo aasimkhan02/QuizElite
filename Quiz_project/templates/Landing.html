@@ -1,0 +1,78 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Platform</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Landing.css' %}">
+    <link rel="stylesheet" href="Landing.css">
+</head>
+<body>
+    <section id="Nav-bar">
+        <div class="Logo">QuizElite</div>
+        <li><a href="#">Home</a></li>
+        <li><a href="{% url 'quizes' %}">Quizzes</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        {% if user.is_authenticated %}
+            <!-- If user is authenticated, display Profile dropdown -->
+            <div class="dropdown">
+                <button class="profile-btn" onclick="toggleDropdown()">Dashboard</button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <a class="Logout" href="{% url 'logout_user' %}">Logout</a>
+                </div>
+            </div>
+        {% else %}
+            <!-- If user is not authenticated, display Sign-In button -->
+            <button class="signin-btn" onclick="OpenLogin()">Sign-In</button>
+        {% endif %}
+        <div class="hamburger-icon" onclick="toggleNav()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="mobile-nav">
+            <div class="close-btn" onclick="toggleNav()"><img src="{% static 'images/Close_button.png' %}" alt="close-button"></div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Quizzes</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </section>
+    <Section class="Frames">
+        <div class="frame1">
+            <p class="Header-line">Welcome to QuizElite<br></p>
+            <p class="Short-line">"Your Ultimate Destination for Fun and Knowledge!"</p>
+        </div>
+        <div class="frame2">
+            <p>Unlock Your<br>Knowledge<br>with Interactive<br>Quizzes</p>
+            <div class="testimg">
+                <img src="{% static 'images/TestVector.png' %}" alt="">
+            </div>
+            <button>Quizes</button>
+        </div>
+        <div class="frame3">
+            <div class="createimg">
+                <img src="{% static 'images/CreateVector.png' %}" alt="">
+            </div>
+            <p>Create and <br>Share Your <br>Own Quizzes</p>
+            <button>Create</button>
+        </div>
+        <div class="frame4">
+            <p>Join already created Quizes</p>
+            <div class="joininput">
+                <input type="text" id="JoinCode">
+                <button>Enter</button>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Quiz Disclaimer: The quizzes provided on this website are intended for entertainment and educational purposes only. While we strive to ensure the accuracy and relevance of quiz content, we cannot guarantee the absolute correctness of quiz results. Factors such as individual knowledge, interpretation of questions, and subjective responses may influence quiz outcomes. Users must understand that quiz results do not constitute professional advice or diagnosis. All users participating in quizzes acknowledge that they are doing so voluntarily and at their own risk. Additionally, users must be at least 13 years old to participate in quizzes on this website. Quiz creators and website administrators reserve the right to modify, remove, or add quizzes at any time without prior notice. By engaging with quizzes on this website, users agree to abide by the website's terms of use and privacy policy. For any questions or concerns regarding quiz content or usage, please contact us.</p>
+        </div>
+    </Section>
+    <script src="{% static 'js/Landing.js' %}"></script>
+    <script src="Landing.js"></script>
+</body>
+</html>

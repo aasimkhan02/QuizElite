@@ -1,0 +1,38 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Platform</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/ImagebasedQuiz.css' %}">
+    <link rel="stylesheet" href="ImagebasedQuiz.css">
+</head>
+<body>
+    <button onclick="startQuiz()" id="startButton">Start Quiz</button>
+    <p id="quizMessage">Quiz have started!</p>
+    <div id="Quiz">
+        <div id="timeBarContainer">
+            <div id="filler"></div>
+        </div>
+        <div id="countdownClock">30</div>
+        <p class="question">Guess the Flag:</p>
+        <div id="question-container">
+            <p>India</p>
+        </div>
+        <div id="option-container">
+            <button>Delhi</button>
+            <button>New York</button>
+            <button>Shanghai</button>
+            <button>Dubai</button>
+        </div>
+    </div>
+    <div id="endMessage" style="display: none;">
+        <p id="correctScore">Correct answers: 0</p>
+        <p id="wrongScore">Wrong answers: 0</p>
+        <button onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+    <script src="{% static 'js/ImagebasedQuiz.js' %}"></script>
+    <script src="ImagebasedQuiz.js"></script>
+</body>
+</html>
